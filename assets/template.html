@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{REPORT_TITLE}}</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Baked defaults. fontIndex: 0=Serif, 1=Arial, 2=SF Pro. chartStyleIndex: 0=pattern, 1=color, 2=inked.
+       colorIndex: 0-7 into the paper palette. Set "date" to the build date (ISO 8601). -->
+  <script id="report-data" type="application/json">{"fontIndex":2,"colorIndex":0,"chartStyleIndex":0,"date":"{{ISO_DATE}}"}</script>
+  <!-- Only needed if the report includes charts: -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script> -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+<div class="report"><div class="report-wrap">
+
+  <header class="report-header">
+    <div class="report-header-left">
+      <span class="report-from">{{KICKER}}</span>
+    </div>
+    <span class="report-date" id="reportDate"></span>
+  </header>
+
+  <h1 class="report-headline">{{HEADLINE}}</h1>
+
+  <div class="report-intro">
+    <p><strong>{{LEAD_SENTENCE}}</strong> {{INTRO_REMAINDER}}</p>
+  </div>
+
+  <!-- Optional metrics strip: 2-4 metrics. Each spans 3 columns (4 metrics fill the row);
+       for 2 metrics use style="grid-column: span 6". Drop this block if there are no headline numbers. -->
+  <div class="metrics-strip">
+    <div class="metrics-strip-border"></div>
+    <div class="metric" style="grid-column: span 3">
+      <div class="metric-value">{{VALUE}}</div>
+      <div class="metric-label">{{LABEL}}</div>
+      <div class="metric-note">{{NOTE}}</div>
+    </div>
+    <!-- ...repeat .metric... -->
+  </div>
+
+  <hr class="report-rule">
+
+  <main class="report-body">
+
+    <section class="report-section">
+      <div class="section-header"><h2 class="section-heading">{{SECTION_TITLE}}</h2></div>
+      <div class="section-items">
+
+        <article class="report-item">
+          <div class="item-label">
+            <h3 class="item-title">{{ITEM_TITLE}}</h3>
+            <span class="item-badge">{{BADGE}}</span>
+          </div>
+          <div class="item-body">
+            <p><strong>{{LEDE}}</strong> {{BODY}}</p>
+            <ul class="item-bullets">
+              <li>{{POINT}}</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- See references/components.md for image, chart, table, quote, and citation blocks. -->
+
+      </div>
+    </section>
+
+  </main>
+
+</div></div>
+
+<!-- Settings panel (app.js populates this). Keep it; it powers paper color, font, and chart-style switching. -->
+<div class="settings-wrap">
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-header">Customize Report</div>
+    <div class="settings-swatches" id="settingsSwatches"></div>
+    <div class="settings-fonts" id="settingsFonts"></div>
+  </div>
+  <button class="settings-btn" id="settingsBtn" title="Customize">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </button>
+</div>
+
+</body>
+</html>
