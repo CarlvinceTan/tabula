@@ -1,5 +1,7 @@
 # tabula
 
+[![skills.sh](https://skills.sh/b/carlvincetan/tabula)](https://skills.sh/carlvincetan/tabula)
+
 An agent skill that turns a topic — researched from the web or from material you
 provide — into a polished, **self-contained, visual-first HTML page** built to be
 understood at a glance.
